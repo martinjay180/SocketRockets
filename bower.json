@@ -1,0 +1,24 @@
+{
+  "name": "SocketRockets",
+  "version": "0.0.0",
+  "homepage": "https://github.com/martinjay180/SocketRockets",
+  "authors": [
+    "Martin Jay <martinjay180@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "phaser": "~2.4.6",
+    "underscore": "~1.8.3"
+  }
+}

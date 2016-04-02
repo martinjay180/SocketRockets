@@ -1,0 +1,124 @@
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="bower_components/phaser/build/phaser.min.js"></script>
+    <script src="bower_components/underscore/underscore-min.js"></script>
+    <script src="js/rocket.js"></script>
+    <script src="js/asteroid.js"></script>
+    <script>
+        //        angular.module('SocketRocket', ['ngMaterial'])
+        //            // .factory('socket', function ($rootScope) {
+        //            //     var socket = io.connect();
+        //            //     return {
+        //            //         init: function () {
+        //            //             socket.removeAllListeners();
+        //            //         },
+        //            //         on: function (eventName, callback) {
+        //            //             socket.on(eventName, function () {
+        //            //                 var args = arguments;
+        //            //                 $rootScope.$apply(function () {
+        //            //                     callback.apply(socket, args);
+        //            //                 });
+        //            //             });
+        //            //         },
+        //            //         emit: function (eventName, data, callback) {
+        //            //             socket.emit(eventName, data, function () {
+        //            //                 var args = arguments;
+        //            //                 $rootScope.$apply(function () {
+        //            //                     if (callback) {
+        //            //                         callback.apply(socket, args);
+        //            //                     }
+        //            //                 });
+        //            //             })
+        //            //         }
+        //            //     };
+        //            // })
+        //            .controller("ClientCtrl", function ($scope) {
+        //
+        //            });
+        //
+        //        var socket = io.connect();
+        //        var rockets = [];
+        //        var asteroids = [];
+        //
+        //        socket.on('id', function (msg) {
+        //            rocket.id = msg;
+        //        });
+        //
+        //        socket.on('positionUpdate', function (msg) {
+        //            var r;
+        //            r = rockets[msg.id];
+        //            if (!r) {
+        //                r = addPlayer();
+        //                rockets[msg.id] = r;
+        //            }
+        //            r.x = msg.position.x;
+        //            r.y = msg.position.y;
+        //            console.log(rockets);
+        //        });
+
+        var rocket;
+        var asteroid;
+        var cursors;
+        var jumpButton;
+        var bg;
+
+        var game = new Phaser.Game(800, 600, Phaser.CANVAS, 'phaser-example', {
+            preload: preload,
+            create: create,
+            update: update,
+            render: render
+        });
+
+        function preload() {
+            game.stage.disableVisibilityChange = true;
+            game.load.spritesheet('dude', 'assets/dude.png', 32, 48);
+            game.load.spritesheet('rocket', 'assets/rocket.png', 48, 48);
+            game.load.image('background', 'assets/space.jpg');
+            game.load.image('asteroid', 'assets/asteroid.png');
+
+        }
+
+        function create() {
+            game.physics.startSystem(Phaser.Physics.ARCADE);
+            game.time.desiredFps = 30;
+            bg = game.add.tileSprite(0, 0, 800, 600, 'background');
+            game.physics.arcade.gravity.y = 100;
+            cursors = game.input.keyboard.createCursorKeys();
+            jumpButton = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
+            rocket = new Rocket(game, cursors, jumpButton);
+            asteroid = new Asteroid(game);
+        }
+
+        function update() {
+            game.physics.arcade.collide(rocket.sprite, asteroid.sprite);
+            rocket.maneuver();
+        }
+
+        function render() {
+            game.debug.text(game.time.suggestedFps, 32, 32);
+            game.debug.text(game.time.physicsElapsed, 64, 32);
+        }
+    </script>
+</head>
+
+<body>
+    <div layout="column">
+        <md-content>
+            <md-toolbar>
+                <span><h2>Socket Rocket</h2></span>
+            </md-toolbar>
+            <div id="phaser-example"></div>
+        </md-content>
+    </div>
+</body>
+
+</html>
