@@ -71,7 +71,7 @@
         var jumpButton;
         var bg;
 
-        var game = new Phaser.Game(800, 600, Phaser.CANVAS, 'phaser-example', {
+        var game = new Phaser.Game(1200, 800, Phaser.CANVAS, 'phaser-example', {
             preload: preload,
             create: create,
             update: update,
@@ -90,7 +90,7 @@
         function create() {
             game.physics.startSystem(Phaser.Physics.ARCADE);
             game.time.desiredFps = 30;
-            bg = game.add.tileSprite(0, 0, 800, 600, 'background');
+            bg = game.add.tileSprite(0, 0, 1200, 800, 'background');
             game.physics.arcade.gravity.y = 100;
             cursors = game.input.keyboard.createCursorKeys();
             jumpButton = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);

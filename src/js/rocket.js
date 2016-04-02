@@ -16,9 +16,10 @@ Rocket.prototype = {
         this.sprite.body.bounce.y = 0.2;
         this.sprite.body.collideWorldBounds = true;
         this.sprite.body.setSize(20, 32, 5, 16);
-        this.sprite.animations.add('left', [0, 1, 2, 3], 10, true);
-        this.sprite.animations.add('turn', [4], 20, true);
-        this.sprite.animations.add('right', [5, 6, 7, 8], 10, true);
+        this.sprite.animations.add('left', [1], 10, true);
+        this.sprite.animations.add('turn', [1], 20, true);
+        this.sprite.animations.add('right', [3], 10, true);
+        this.sprite.animations.add('down', [2], 10, true);
     },
     maneuver: function () {
         if (this.cursors.left.isDown) {
