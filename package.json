@@ -1,31 +1,45 @@
 {
-    "name": "socketrockets",
-    "version": "1.0.0",
-    "description": "Fly a rocket with your friends in this fun game!",
-    "main": "index.js",
-    "scripts": {
+  "name": "socketrockets",
+  "version": "1.0.0",
+  "description": "Fly a rocket with your friends in this fun game!",
+  "main": "index.js",
+  "scripts": {
     "test": "./node_modules/mocha/bin/mocha test/*",
     "test-travis": "./node_modules/istanbul/lib/cli.js cover ./node_modules/mocha/bin/_mocha -- -R spec ./test/*"
   },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/martinjay180/SocketRockets.git"
-    },
-    "author": "Martin Jay",
-    "license": "ISC",
-    "bugs": {
-        "url": "https://github.com/martinjay180/SocketRockets/issues"
-    },
-    "homepage": "https://github.com/martinjay180/SocketRockets#readme",
-    "dependencies": {
-        "general-js": "^1.0.2",
-        "socket.io": "^1.4.5",
-        "socketio": "^1.0.0",
-        "underscore": "^1.8.3"
-    },
-    "devDependencies": {
-        "coveralls": "^2.11.9",
-        "istanbul": "^0.4.2",
-        "mocha": "^2.4.5"
-    }
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/martinjay180/SocketRockets.git"
+  },
+  "author": "Martin Jay",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/martinjay180/SocketRockets/issues"
+  },
+  "homepage": "https://github.com/martinjay180/SocketRockets#readme",
+  "dependencies": {
+    "general-js": "^1.0.2",
+    "socket.io": "^1.4.5",
+    "socketio": "^1.0.0",
+    "underscore": "^1.8.3"
+  },
+  "devDependencies": {
+    "coveralls": "^2.11.9",
+    "del": "^2.2.0",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.0",
+    "gulp-cache": "^0.4.3",
+    "gulp-concat": "^2.6.0",
+    "gulp-cssnano": "^2.1.1",
+    "gulp-imagemin": "^2.4.0",
+    "gulp-jshint": "^2.0.0",
+    "gulp-livereload": "^3.8.1",
+    "gulp-notify": "^2.2.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-ruby-sass": "^2.0.6",
+    "gulp-uglify": "^1.5.3",
+    "istanbul": "^0.4.2",
+    "jshint": "^2.9.1",
+    "mocha": "^2.4.5"
+  }
 }
